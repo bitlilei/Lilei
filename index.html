@@ -81,6 +81,7 @@
     .lang-zh, .lang-en { display: inline; }
     html[data-lang="zh"] .lang-en { display: none !important; }
     html[data-lang="en"] .lang-zh { display: none !important; }
+    html[data-lang="en"] .zh-nav-only { display: none !important; }
     .top-nav { position: relative; }
     .lang-toggle {
       position: absolute;
@@ -136,7 +137,7 @@
         <li><a href="#home"><span class="lang-en">Home</span><span class="lang-zh">首页</span></a></li>
         <li><a href="#jobs"><span class="lang-en">Collaboration</span><span class="lang-zh">招生合作</span></a></li>
         <li><a href="#research"><span class="lang-en">Research</span><span class="lang-zh">研究方向</span></a></li>
-        <li><a href="#service"><span class="lang-en">Academic Service</span><span class="lang-zh">学术服务</span></a></li>
+        <li class="zh-nav-only"><a href="#service"><span class="lang-zh">学术服务</span></a></li>
         <li><a href="#publications"><span class="lang-en">Publications</span><span class="lang-zh">论文成果</span></a></li>
       </ul>
       <button id="langToggle" class="lang-toggle" type="button" aria-label="Switch language">
