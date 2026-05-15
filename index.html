@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en" data-lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,7 +9,7 @@
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+      font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
       color: #333;
       background: #fff;
       line-height: 1.6;
@@ -75,45 +75,101 @@
       font-size: 15px;
       margin-top: 10px;
     }
+
+
+    /* Language switch */
+    .lang-zh, .lang-en { display: inline; }
+    html[data-lang="zh"] .lang-en { display: none !important; }
+    html[data-lang="en"] .lang-zh { display: none !important; }
+    .top-nav { position: relative; }
+    .lang-toggle {
+      position: absolute;
+      right: 0;
+      top: 32px;
+      border: 1px solid #ddd;
+      background: #fff;
+      color: #333;
+      padding: 7px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .lang-toggle:hover { border-color: #111; color: #000; }
+    .lang-toggle span { color: #999; }
+    html[data-lang="zh"] .toggle-zh,
+    html[data-lang="en"] .toggle-en { color: #111; }
+    html[data-lang="zh"] .toggle-en,
+    html[data-lang="en"] .toggle-zh { color: #999; font-weight: 500; }
+    @media (max-width: 650px) {
+      .lang-toggle { position: static; display: block; margin: 20px auto 0; }
+      nav ul { gap: 12px 20px; }
+    }
+
+    /* Academic service */
+    .service-list { list-style: none; display: grid; gap: 12px; }
+    .service-list li {
+      position: relative;
+      padding-left: 22px;
+      font-size: 14.5px;
+      line-height: 1.7;
+      color: #444;
+    }
+    .service-list li::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #111;
+      position: absolute;
+      left: 0;
+      top: 10px;
+    }
   </style>
 </head>
 <body>
   <div class="container">
-    <nav>
+    <nav class="top-nav">
       <ul>
-        <li><a href="#home">Home</a></li>
-        <li><a href="#jobs">Collaboration</a></li>
-        <li><a href="#research">Research</a></li>
-        <li><a href="#publications">Publications</a></li>
+        <li><a href="#home"><span class="lang-en">Home</span><span class="lang-zh">首页</span></a></li>
+        <li><a href="#jobs"><span class="lang-en">Collaboration</span><span class="lang-zh">招生合作</span></a></li>
+        <li><a href="#research"><span class="lang-en">Research</span><span class="lang-zh">研究方向</span></a></li>
+        <li><a href="#service"><span class="lang-en">Academic Service</span><span class="lang-zh">学术服务</span></a></li>
+        <li><a href="#publications"><span class="lang-en">Publications</span><span class="lang-zh">论文成果</span></a></li>
       </ul>
+      <button id="langToggle" class="lang-toggle" type="button" aria-label="Switch language">
+        <span class="toggle-zh">中</span> / <span class="toggle-en">EN</span>
+      </button>
     </nav>
 
     <header id="home">
       <h1>Lei Li</h1>
-      <p class="subtitle">Professor @ Beijing Institute of Technology</p>
+      <p class="subtitle"><span class="lang-en">Professor @ Beijing Institute of Technology</span><span class="lang-zh">北京理工大学教授</span></p>
     </header>
 
     <div class="divider"></div>
 
     <main class="main-content">
       <div class="contact-section">
-        <h3>Contact Information</h3>
+        <h3><span class="lang-en">Contact Information</span><span class="lang-zh">联系方式</span></h3>
         <div class="contact-item">
           <i class="fa-solid fa-location-dot"></i>
-          <span>Beijing Institute of Technology (BIT), Beijing, China</span>
+          <span><span class="lang-en">Beijing Institute of Technology (BIT), Beijing, China</span><span class="lang-zh">北京理工大学，北京，中国</span></span>
         </div>
         <div class="contact-item">
           <i class="fa-solid fa-briefcase"></i>
-          <span>Deputy Director, Computational Intelligence Lab</span>
-      </div>
+          <span><span class="lang-en">Deputy Director, Computational Intelligence Lab</span><span class="lang-zh">计算智能实验室副主任</span></span>
+        </div>
         <div class="contact-item">
           <i class="fa-solid fa-envelope"></i>
           <a href="mailto:lenny.lilei.cs@gmail.com">lenny.lilei.cs@gmail.com</a>
         </div>
 
         <div class="admin-contact">
-          <p><strong>Research Focus</strong></p>
-          <p>Large Multimodal/Language Models · Embodied & Physical AI · AIGC </p>
+          <p><strong><span class="lang-en">Research Focus</span><span class="lang-zh">研究方向</span></strong></p>
+          <p><span class="lang-en">Large Multimodal/Language Models · Embodied & Physical AI · AIGC</span><span class="lang-zh">大型多模态/语言模型 · 具身与物理人工智能 · AIGC</span></p>
         </div>
       </div>
 
@@ -129,54 +185,75 @@
     </main>
 
     <section id="jobs" class="content-section">
-      <h2>Collaboration & Students</h2>
+      <h2><span class="lang-en">Collaboration & Students</span><span class="lang-zh">招生合作</span></h2>
       <div class="recruitment-highlight">
         <p style="margin-bottom: 12px; font-weight: 500; color: #000;">
-          I am always looking for visiting scholars, Postdocs, PhD students, (remote) interns, and visiting students.
+          <span class="lang-en">I am always looking for visiting scholars, Postdocs, PhD students, (remote) interns, and visiting students.</span>
+          <span class="lang-zh">长期欢迎访问学者、博士后、博士生、远程实习生和访问学生加入团队。</span>
         </p>
         <p style="margin-bottom: 12px;">
-          I am always open to possible discussion and research collaboration with junior students. I value diversity and fresh perspectives in artificial intelligence research.
+          <span class="lang-en">I am always open to possible discussion and research collaboration with junior students. I value diversity and fresh perspectives in artificial intelligence research.</span>
+          <span class="lang-zh">欢迎青年学生交流讨论与开展科研合作。团队重视多元背景与新鲜视角，鼓励对人工智能研究有热情的同学联系。</span>
         </p>
         <p>
-          <strong>Students from underrepresented groups are strongly encouraged to reach out!</strong> 
-          If you are interested in working together, please contact me at 
+          <strong><span class="lang-en">Students from underrepresented groups are strongly encouraged to reach out!</span><span class="lang-zh">特别鼓励来自多元背景的学生主动联系！</span></strong>
+          <span class="lang-en"> If you are interested in working together, please contact me at </span>
+          <span class="lang-zh">如有合作兴趣，请通过邮箱联系：</span>
           <a href="mailto:lenny.lilei.cs@gmail.com" style="color: #000; text-decoration: underline; font-weight: 600;">lenny.lilei.cs@gmail.com</a>.
         </p>
       </div>
     </section>
 
-<section id="research" class="content-section">
-  <h2>Research Overview</h2>
-  
-  <p style="margin-bottom: 16px;">
-    <strong>Large Multimodal & Language Models (LMMs/LLMs):</strong> 
-    Exploring unified representations across text, vision, audio, and 3D modalities. The focus is on cross-modal alignment, complex reasoning, and advancing foundational model architectures for comprehensive understanding.
-  </p>
+    <section id="research" class="content-section">
+      <h2><span class="lang-en">Research Overview</span><span class="lang-zh">研究方向</span></h2>
+      
+      <p style="margin-bottom: 16px;">
+        <strong><span class="lang-en">Large Multimodal & Language Models (LMMs/LLMs):</span><span class="lang-zh">大型多模态与语言模型：</span></strong>
+        <span class="lang-en">Exploring unified representations across text, vision, audio, and 3D modalities. The focus is on cross-modal alignment, complex reasoning, and advancing foundational model architectures for comprehensive understanding.</span>
+        <span class="lang-zh">探索文本、视觉、音频和三维等多模态的统一表征，重点关注跨模态对齐、复杂推理，以及面向综合理解的基础模型架构。</span>
+      </p>
 
-  <p style="margin-bottom: 16px;">
-    <strong>Embodied & Physical AI:</strong> 
-    Investigating AI perception and interaction within physical environments. Key areas include human and robotic representation learning, sensorimotor control, and grounding physical commonsense in multimodal models.
-  </p>
+      <p style="margin-bottom: 16px;">
+        <strong><span class="lang-en">Embodied & Physical AI:</span><span class="lang-zh">具身与物理人工智能：</span></strong>
+        <span class="lang-en">Investigating AI perception and interaction within physical environments. Key areas include human and robotic representation learning, sensorimotor control, and grounding physical commonsense in multimodal models.</span>
+        <span class="lang-zh">研究人工智能在物理环境中的感知与交互，涵盖人类与机器人表征学习、感知运动控制，以及多模态模型中的物理常识 grounding。</span>
+      </p>
 
-  <p style="margin-bottom: 16px;">
-    <strong>Understanding & Generation (AIGC):</strong> 
-    Advancing Generative AI to create high-fidelity and controllable content. Research covers the generation of images, complex 3D scenes, dynamic videos, and interactive virtual humans.
-  </p>
+      <p style="margin-bottom: 16px;">
+        <strong><span class="lang-en">Understanding & Generation (AIGC):</span><span class="lang-zh">理解与生成（AIGC）：</span></strong>
+        <span class="lang-en">Advancing Generative AI to create high-fidelity and controllable content. Research covers the generation of images, complex 3D scenes, dynamic videos, and interactive virtual humans.</span>
+        <span class="lang-zh">推进生成式人工智能在高保真、可控内容生成中的应用，研究内容包括图像、复杂三维场景、动态视频和交互式虚拟人生成。</span>
+      </p>
 
-<p style="margin-bottom: 16px;">
-  <strong>Cognitive Intelligence:</strong> 
-  Explore foundational multimodal models to advance cognitive intelligence. This includes cross-modal reasoning in healthcare, cognitive decision support, and simulation.
-</p>
+      <p style="margin-bottom: 16px;">
+        <strong><span class="lang-en">Cognitive Intelligence:</span><span class="lang-zh">认知智能：</span></strong>
+        <span class="lang-en">Explore foundational multimodal models to advance cognitive intelligence. This includes cross-modal reasoning in healthcare, cognitive decision support, and simulation.</span>
+        <span class="lang-zh">探索面向认知智能的多模态基础模型，包括医疗场景中的跨模态推理、认知决策支持与仿真。</span>
+      </p>
 
-<p>
-  <strong>Current Priorities:</strong> 
-  Large multimodal/language models for generation and cognitive understanding; Embodied and Physical AI; AIGC for 3D/video/human content; and multimodal AI into advanced cognitive health applications.
-</p>
-</section>
+      <p>
+        <strong><span class="lang-en">Current Priorities:</span><span class="lang-zh">近期重点：</span></strong>
+        <span class="lang-en">Large multimodal/language models for generation and cognitive understanding; Embodied and Physical AI; AIGC for 3D/video/human content; and multimodal AI into advanced cognitive health applications.</span>
+        <span class="lang-zh">面向生成与认知理解的大型多模态/语言模型、具身与物理人工智能、三维/视频/人物内容生成，以及多模态人工智能在认知健康等场景中的应用。</span>
+      </p>
+    </section>
+
+    <section id="service" class="content-section">
+      <h2><span class="lang-en">Academic Service</span><span class="lang-zh">学术服务</span></h2>
+      <ul class="service-list">
+        <li><span class="lang-en">Committee Member, Multilingual Intelligent Information Processing Technical Committee, Chinese Association for Artificial Intelligence</span><span class="lang-zh">中国人工智能学会多语种智能信息处理专业委员会委员</span></li>
+        <li><span class="lang-en">Committee Member, Cognitive Modeling Technical Committee, Chinese Association for Cognitive Science</span><span class="lang-zh">中国认知科学学会认知建模专业委员会委员</span></li>
+        <li><span class="lang-en">Organization Chair, International Conference on Multilingual Intelligence</span><span class="lang-zh">多语种智能国际会议组织主席</span></li>
+        <li><span class="lang-en">Associate Editor, <em>Data Intelligence</em></span><span class="lang-zh"><em>Data Intelligence</em> 副主编</span></li>
+        <li><span class="lang-en">Reviewer for journals including <em>TPAMI</em>, <em>Information Fusion</em>, and <em>TMM</em></span><span class="lang-zh"><em>TPAMI</em>、<em>Information Fusion</em>、<em>TMM</em> 等期刊审稿人</span></li>
+        <li><span class="lang-en">Program Committee Member and Area Chair for conferences including CVPR, NeurIPS, ICLR, and AAAI</span><span class="lang-zh">CVPR、NeurIPS、ICLR、AAAI 等会议程序委员会委员和分会主席</span></li>
+        <li><span class="lang-en">Lead instructor for courses including <em>Introduction to Artificial Intelligence</em>, <em>Deep Learning</em>, and <em>Machine Learning</em></span><span class="lang-zh">主导讲授《人工智能导论》《深度学习》《机器学习》等课程</span></li>
+      </ul>
+    </section>
 
     <section id="publications" class="content-section">
-      <h2>Recent Selected Publications</h2>
-      <p class="pub-note">Corresponding Author: *</p>
+      <h2><span class="lang-en">Recent Selected Publications</span><span class="lang-zh">代表性论文</span></h2>
+      <p class="pub-note"><span class="lang-en">Corresponding Author: *</span><span class="lang-zh">通讯作者：*</span></p>
       
       <div class="pub-item"><strong>Intrinsic Entropy of Context Length Scaling in LLMs.</strong> Jingzhe Shi, Qinwei Ma, Hongyi Liu, Hang Zhao, Jenq-Neng Hwang, Lei Li*. <span class="venue">ICLR 2026 Oral</span></div>
       <div class="pub-item"><strong>RAM: Recover Any 3D Human Motion in-the-Wild.</strong> Sen Jia, Ning Zhu, Jinqin Zhong, Jiale Zhou, Zhang Huaping, Jenq-Neng Hwang, Lei Li*. <span class="venue">CVPR 2026</span></div>
@@ -211,8 +288,32 @@
     </section>
 
     <footer style="padding: 60px 0 40px; border-top: 1px solid #eee; text-align: center; font-size: 12px; color: #999; letter-spacing: 0.05em;">
-      <p>&copy; 2026 Lei Li </p>
+      <p>&copy; 2026 Lei Li</p>
     </footer>
   </div>
+
+  <script>
+    (function () {
+      const root = document.documentElement;
+      const button = document.getElementById('langToggle');
+
+      function setLanguage(lang) {
+        const nextLang = lang === 'zh' ? 'zh' : 'en';
+        root.dataset.lang = nextLang;
+        root.setAttribute('lang', nextLang === 'zh' ? 'zh-CN' : 'en');
+        button.setAttribute('aria-label', nextLang === 'zh' ? '切换到英文' : 'Switch to Chinese');
+        button.setAttribute('title', nextLang === 'zh' ? '切换到英文' : 'Switch to Chinese');
+        localStorage.setItem('siteLang', nextLang);
+      }
+
+      const savedLang = localStorage.getItem('siteLang');
+      const browserLang = (navigator.language || '').toLowerCase().startsWith('zh') ? 'zh' : 'en';
+      setLanguage(savedLang || browserLang);
+
+      button.addEventListener('click', function () {
+        setLanguage(root.dataset.lang === 'zh' ? 'en' : 'zh');
+      });
+    })();
+  </script>
 </body>
 </html>
